@@ -12,11 +12,11 @@ in the same order as the columns in the SQL statement,
 and with the WHERE clause value in the last position.
 
 Other preconditions:
+- CSV file must be UTF-8 encoded.
 - The first line should hold the names of the columns.
 - Strings must be single quoted, except in column names in the first line.
 - Integers must not be quoted.
 - Any 'NULL' strings must be converted to NULL values.
-- Non-ASCII characters must be removed or replaced.
 
 Version 2
 Since 30 July 2014
@@ -27,8 +27,8 @@ Written in Python 3.4 for the Portable Antiquities Scheme database
 
 ## Specify your parameters here
 table = 'publications'
-fileIn = 'test-in-publicationsUpdate.csv'
-fileOut = 'test-out.sql'
+fileIn = 'inputs/csvfilename.csv'
+fileOut = 'outputs/sqlfilename.sql'
 
 import csv
 
@@ -39,8 +39,8 @@ equals = '='
 comma = ', '
 end = ';\n'
 
-with open(fileOut, 'w', newline='') as sqlFileOut:
-    with open(fileIn, newline='') as csvFileIn:
+with open(fileOut, 'w', newline='', encoding='utf-8') as sqlFileOut:
+    with open(fileIn, newline='', encoding='utf-8') as csvFileIn:
         myReader = csv.reader(csvFileIn, delimiter='|')
         firstLine = True
         columnNames = []
@@ -56,4 +56,3 @@ with open(fileOut, 'w', newline='') as sqlFileOut:
                     columns = columns + columnNames[item] + equals + row[item] + comma
                 columns = columns + columnNames[-2] + equals + row[-2]
                 sqlFileOut.write(update + table + setclause + columns + where + idcolumn + end)
-                

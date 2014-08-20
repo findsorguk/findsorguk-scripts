@@ -18,6 +18,9 @@ CSV file must be sorted by value1 ascending and then by value2 descending, e.g.
 2,1,0011A0000100112C
 2,,0011A00001001257
 
+Other preconditions:
+- CSV file must be UTF-8 encoded.
+
 Version 2
 Since 30 July 2014
 Copyright Mary Chester-Kadwell 2014
@@ -36,8 +39,8 @@ setclause = "SET pubID='"
 where = "' WHERE pubID='"
 end = "';\n"
 
-with open(fileOut, 'w', newline='') as sqlFileOut:
-    with open(fileIn, newline='') as csvFileIn:
+with open(fileOut, 'w', newline='', encoding='utf-8') as sqlFileOut:
+    with open(fileIn, newline='', encoding='utf-8') as csvFileIn:
         myReader = csv.reader(csvFileIn, delimiter=',')
         changeTo = ''
         changeFrom = ''
