@@ -8,5 +8,5 @@ for d in /var/www/beowulf/public_html/images/*/ ; do
     echo "$d"
     dir=$(basename "$d")
     echo "$dir"
-    sudo s3cmd sync $d --skip-existing --preserve --verbose --recursive  --exclude 'zoom/' --exclude 'small/' --exclude 'medium/' --exclude 'display/' s3://findsorguk-images/$dir/
+    s3cmd sync $d --skip-existing --preserve --verbose --recursive  --exclude 'zoom/' --exclude 'small/' --exclude 'medium/' --exclude 'display/' s3://findsorguk-images/$dir/
 done;
