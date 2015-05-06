@@ -15,4 +15,7 @@ wget https://raw.githubusercontent.com/findsorguk/vhostsConfigs/master/https-fin
 a2ensite https-finds.org.uk.conf
 service apache2 reload
 service apache2 restart
+cd /var/solr/
+git clone https://github.com/findsorguk/findsorguk-solr.git findsorguk
+
 echo 'Site ready to configure'
