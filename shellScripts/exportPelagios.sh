@@ -7,6 +7,6 @@ curl "http://81.29.66.140:8080/solr/objects/select?indent=on&version=2.2&q=objec
 cd $BACK
 zip $ZIP.zip $FILE
 rm $FILE
-/usr/local/bin/s3cmd sync $BACK s3://findsorguk-pelagios/
+s3cmd sync $BACK s3://findsorguk-pelagios/
 find $BACK* -type f -mtime +5 -exec rm '{}' \;
 
