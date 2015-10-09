@@ -21,7 +21,7 @@ mkdir('public_html/images')
 chmod 777 app/cache/
 echo 'Set permissions on cache folders to writable'
 
-chown -R www-data:ww-data /var/www/finds.org.uk
+chown -R www-data:www-data /var/www/finds.org.uk
 echo 'Set ownership to www-data group'
 
 cp app/config/application.ini.template application.ini
