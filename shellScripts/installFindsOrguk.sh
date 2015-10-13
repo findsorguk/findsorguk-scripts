@@ -6,7 +6,7 @@
 echo 'Starting installation of findsorguk - Good luck!'
 
 cd /var/www/
-git clone https://github.com/findsorguk/findsorguk-scripts.git finds.org.uk
+git clone https://github.com/findsorguk/findsorguk.git finds.org.uk
 echo 'Cloned source code to web site folder'
 
 cd finds.org.uk
